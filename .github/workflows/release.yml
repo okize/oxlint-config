@@ -46,16 +46,16 @@ jobs:
       # then reads the new version from it and then removes the file
       - name: Get new package version
         run: |
-          echo "NEW_PACKAGE_VERSION=$(yarn changeset status --output=release.json && jq -r '.releases[0].newVersion' release.json && rm release.json)" >> "$GITHUB_ENV"
+          yarn changeset status --output=release.json
+          echo "NEW_PACKAGE_VERSION=$(jq -r '.releases[0].newVersion' release.json)" >> "$GITHUB_ENV"
+          rm release.json
 
       - name: Create Release Pull Request or Publish to npm
         uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         id: changesets
         with:
-          createGithubReleases: true
-          publish: yarn release
-          title: 'chore: release v${{env.NEW_PACKAGE_VERSION}}'
-          commit: 'chore: release v${{env.NEW_PACKAGE_VERSION}}'
-        env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
-          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          github-token: ${{ steps.app-token.outputs.token }}
+          create-github-releases: true
+          publish-script: yarn release
+          pr-title: 'chore: release v${{env.NEW_PACKAGE_VERSION}}'
+          commit-message: 'chore: release v${{env.NEW_PACKAGE_VERSION}}'

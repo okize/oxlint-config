@@ -38,8 +38,8 @@ Create an `oxlint.config.ts` in your project root:
 **TypeScript & React project** (most common):
 
 ```ts
-import { defineConfig } from 'oxlint';
 import { typescriptConfig, reactConfig } from '@okize/oxlint-config';
+import { defineConfig } from 'oxlint';
 
 export default defineConfig({
   extends: [typescriptConfig, reactConfig],
@@ -49,8 +49,8 @@ export default defineConfig({
 **JavaScript-only project:**
 
 ```ts
-import { defineConfig } from 'oxlint';
 import { javascriptConfig } from '@okize/oxlint-config';
+import { defineConfig } from 'oxlint';
 
 export default defineConfig({
   extends: [javascriptConfig],
@@ -61,10 +61,10 @@ export default defineConfig({
 
 ### Base configs
 
-| Export             | Description                                                                   |
-| ------------------ | ----------------------------------------------------------------------------- |
-| `javascriptConfig` | Base config for any JS project (base + import + promise + barrel-files rules) |
-| `typescriptConfig` | TypeScript projects (includes all JavaScript rules + TypeScript rules)        |
+| Export             | Description                                                            |
+| ------------------ | ---------------------------------------------------------------------- |
+| `javascriptConfig` | Base config for any JS project (base + import + promise rules)         |
+| `typescriptConfig` | TypeScript projects (includes all JavaScript rules + TypeScript rules) |
 
 ### Feature configs
 
@@ -83,7 +83,6 @@ Feature configs wrap their rules in `overrides` with default file patterns, so t
 **Composing configs:**
 
 ```ts
-import { defineConfig } from 'oxlint';
 import {
   typescriptConfig,
   reactConfig,
@@ -93,6 +92,7 @@ import {
   storybookConfig,
   nodeConfig,
 } from '@okize/oxlint-config';
+import { defineConfig } from 'oxlint';
 
 export default defineConfig({
   extends: [
@@ -124,8 +124,8 @@ export default defineConfig({
 File-specific overrides use `overrides`. Note that `extends` is not supported inside `overrides` — use rule imports for those:
 
 ```ts
-import { defineConfig } from 'oxlint';
 import { typescriptConfig, vitestRules } from '@okize/oxlint-config';
+import { defineConfig } from 'oxlint';
 
 export default defineConfig({
   extends: [typescriptConfig],
@@ -166,8 +166,8 @@ Create an `oxfmt.config.mts` in your project root. Spread `oxfmtConfig` and over
 
 ```ts
 import type { OxfmtConfig } from 'oxfmt';
-import { defineConfig } from 'oxfmt';
 import { oxfmtConfig } from '@okize/oxlint-config/oxfmtConfig';
+import { defineConfig } from 'oxfmt';
 
 // oxlint-disable-next-line import-x/no-default-export
 export default defineConfig({
@@ -219,4 +219,4 @@ Several categories of rules cannot use this approach:
 3. **Rules requiring module resolution** (e.g. `import-x/no-unresolved`, `import-x/extensions`, `import-x/no-rename-default`). In ESLint, these rules use `eslint-import-resolver-typescript` to resolve TypeScript path aliases, barrel re-exports, and extensionless imports. The resolver is configured via ESLint's `settings['import-x/resolver']` — but oxlint's jsPlugin runner does not pass ESLint settings to plugins. Without a resolver, these rules can't find modules and produce thousands of false positives on every import.
 
 4. **Old-style ESLint plugins** (e.g. `eslint-plugin-filenames`). These export rules as plain functions instead of objects with a `create` method, which oxlint's jsPlugin runner — requiring the modern `{ meta, create }` format — cannot load. The package is also abandoned. Where a rule from such a plugin is worth keeping, it is reimplemented in our own custom local jsPlugin (`custom`) under [`plugins/custom.mjs`](./plugins/custom.mjs).
-   - `custom/match-exported` is a faithful port of `eslint-plugin-filenames`' `match-exported`, enabled in `javascriptConfig` + `typescriptConfig`, matching eslint-config. (Its rule ID is namespaced `custom/` rather than `filenames/` to signal it is our own rule, not the upstream plugin.) The upstream `match-regex` and `no-index` rules are not ported — eslint-config disables both.
+   - `custom/match-exported` is a port of `eslint-plugin-filenames`' `match-exported`, enabled in `javascriptConfig` + `typescriptConfig`. It extends the upstream rule: beyond default exports, a file with a single named _value_ export must also match that export's name (on by default; pass `['error', { matchSingleNamedExport: false }]` to disable). Type exports do not count, and a file that re-exports from another file is skipped (this includes `import { x } from './x'; export { x };`). That check also skips an UPPER_CASE export such as `DEFAULT_MODAL_WIDTH` (a constant, and files are not named in UPPER_CASE) and a name that contains a dot, such as `leafNode.factory.ts` (the part after the first dot names the file's role). The name is the file name after `replacePattern` is removed, or the folder name for an `index` file. Options are a single object — `{ transform, replacePattern, matchCallExpression, matchSingleNamedExport }` — rather than upstream's positional arguments. This is stricter than upstream and than `@wistia/eslint-config`. (Its rule ID is namespaced `custom/` rather than `filenames/` to signal it is our own rule, not the upstream plugin.) The upstream `match-regex` and `no-index` rules are not ported — eslint-config disables both.

@@ -1,4 +1,4 @@
-# CLAUDE.md
+# AGENTS.md
 
 ## Philosophy
 
@@ -15,18 +15,18 @@ Every rule of every enabled plugin — native oxlint plugins and jsPlugins alike
 
 - Every rule must be set to `error` or `off`. Never `warn`.
 - Every rule set to `off` must have a `// Decision: <reason>` comment above it explaining why it is disabled. Example: `// Decision: too strict for general use` or `// Decision: handled by native vitest/valid-title`.
-- When adding a new native plugin to a rule file, run `npx oxlint --rules | grep PLUGIN` to get the full rule list and configure every one.
-- When upgrading the `oxlint` dependency or any jsPlugin package, run `npx vitest run test/validate-rules.test.mjs` to detect new unconfigured rules and configured rules the plugin no longer ships (renames/removals).
+- When adding a new native plugin to a rule file, run `yarn oxlint --rules --format=default | grep PLUGIN` to get the full rule list and configure every one. The `--format` flag is required: `--rules` works only under the `default` and `json` reporters, and oxlint silently switches to `github` when `GITHUB_ACTIONS` is set or to `agent` when it detects an AI agent. In both cases bare `--rules` prints nothing and exits 0.
+- When upgrading the `oxlint` dependency or any jsPlugin package, run `yarn vitest run test/validate-rules.test.mjs` to detect new unconfigured rules and configured rules the plugin no longer ships (renames/removals).
 - When adding a new native oxlint rule, check whether a jsPlugin rule in the same file covers the same behavior. If so, set the jsPlugin rule to `off` with `// Decision: handled by native <plugin/rule-name>`.
 - When a jsPlugin exposes the same rule object under more than one name (e.g. @eslint-react's `x-*` names alias the unprefixed rules), configure exactly one of the names and omit the rest. The coverage test groups rules by object identity and fails when a group has zero configured names (unaccounted-for rule) or more than one (each enabled name reports every violation again).
 
 ### jsPlugins specifiers
 
-Declare every npm-package jsPlugin through `resolvePlugin()` (from `resolve-plugin.mjs`), never as a bare package name. oxlint resolves bare specifiers from the consumer's config location; when a consumer's dependency tree nests this package's dependencies (e.g. its typescript major differs from ours), bare specifiers fail with "Failed to load JS plugin". `resolvePlugin` returns an absolute path resolved from within this package, which loads in both this repo and any consumer layout.
+Declare every npm-package jsPlugin through `resolvePlugin()` (from `resolvePlugin.mjs`), never as a bare package name. oxlint resolves bare specifiers from the consumer's config location; when a consumer's dependency tree nests this package's dependencies (e.g. its typescript major differs from ours), bare specifiers fail with "Failed to load JS plugin". `resolvePlugin` returns an absolute path resolved from within this package, which loads in both this repo and any consumer layout.
 
 Do not add an explicit `name` alias starting with `eslint-plugin-` — oxlint rejects those. A bare path entry keeps the full package name (e.g. `eslint-plugin-storybook/...`) working as a rule prefix.
 
-The resolver is a workaround for oxlint only accepting string specifiers. If [oxc-project/oxc#23944](https://github.com/oxc-project/oxc/issues/23944) (plugin registration by imported object, as in ESLint flat config) ships, migrate to direct plugin imports and delete `resolve-plugin.mjs`.
+The resolver is a workaround for oxlint only accepting string specifiers. If [oxc-project/oxc#23944](https://github.com/oxc-project/oxc/issues/23944) (plugin registration by imported object, as in ESLint flat config) ships, migrate to direct plugin imports and delete `resolvePlugin.mjs`.
 
 ### typescript dependency
 
@@ -38,7 +38,7 @@ This project uses vitest. The `jest` plugin is not enabled. Do not add `jest/*` 
 
 ### Validation
 
-Run `npx vitest run` before considering any change complete. The test suite checks:
+Run `yarn vitest run` before considering any change complete. The test suite checks:
 
 - All rules use `error` or `off` severity (never `warn`)
 - All native oxlint rules for enabled plugins are explicitly configured

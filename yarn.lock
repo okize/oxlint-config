@@ -903,7 +903,7 @@ __metadata:
     eslint-plugin-testing-library: "npm:^7.16.2"
     oxfmt: "npm:^0.59.0"
     oxlint: "npm:^1.74.0"
-    oxlint-tsgolint: "npm:^0.25.0"
+    oxlint-tsgolint: "npm:^7.0.2008"
     storybook: "npm:^10.5.2"
     typescript: "npm:^6.0.3"
     vite: "npm:^8.3.8"
@@ -1354,44 +1354,44 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oxlint-tsgolint/darwin-arm64@npm:0.25.0":
-  version: 0.25.0
-  resolution: "@oxlint-tsgolint/darwin-arm64@npm:0.25.0"
+"@oxlint-tsgolint/darwin-arm64@npm:7.0.2008":
+  version: 7.0.2008
+  resolution: "@oxlint-tsgolint/darwin-arm64@npm:7.0.2008"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@oxlint-tsgolint/darwin-x64@npm:0.25.0":
-  version: 0.25.0
-  resolution: "@oxlint-tsgolint/darwin-x64@npm:0.25.0"
+"@oxlint-tsgolint/darwin-x64@npm:7.0.2008":
+  version: 7.0.2008
+  resolution: "@oxlint-tsgolint/darwin-x64@npm:7.0.2008"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@oxlint-tsgolint/linux-arm64@npm:0.25.0":
-  version: 0.25.0
-  resolution: "@oxlint-tsgolint/linux-arm64@npm:0.25.0"
+"@oxlint-tsgolint/linux-arm64@npm:7.0.2008":
+  version: 7.0.2008
+  resolution: "@oxlint-tsgolint/linux-arm64@npm:7.0.2008"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@oxlint-tsgolint/linux-x64@npm:0.25.0":
-  version: 0.25.0
-  resolution: "@oxlint-tsgolint/linux-x64@npm:0.25.0"
+"@oxlint-tsgolint/linux-x64@npm:7.0.2008":
+  version: 7.0.2008
+  resolution: "@oxlint-tsgolint/linux-x64@npm:7.0.2008"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@oxlint-tsgolint/win32-arm64@npm:0.25.0":
-  version: 0.25.0
-  resolution: "@oxlint-tsgolint/win32-arm64@npm:0.25.0"
+"@oxlint-tsgolint/win32-arm64@npm:7.0.2008":
+  version: 7.0.2008
+  resolution: "@oxlint-tsgolint/win32-arm64@npm:7.0.2008"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@oxlint-tsgolint/win32-x64@npm:0.25.0":
-  version: 0.25.0
-  resolution: "@oxlint-tsgolint/win32-x64@npm:0.25.0"
+"@oxlint-tsgolint/win32-x64@npm:7.0.2008":
+  version: 7.0.2008
+  resolution: "@oxlint-tsgolint/win32-x64@npm:7.0.2008"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -4979,16 +4979,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"oxlint-tsgolint@npm:^0.25.0":
-  version: 0.25.0
-  resolution: "oxlint-tsgolint@npm:0.25.0"
+"oxlint-tsgolint@npm:^7.0.2008":
+  version: 7.0.2008
+  resolution: "oxlint-tsgolint@npm:7.0.2008"
   dependencies:
-    "@oxlint-tsgolint/darwin-arm64": "npm:0.25.0"
-    "@oxlint-tsgolint/darwin-x64": "npm:0.25.0"
-    "@oxlint-tsgolint/linux-arm64": "npm:0.25.0"
-    "@oxlint-tsgolint/linux-x64": "npm:0.25.0"
-    "@oxlint-tsgolint/win32-arm64": "npm:0.25.0"
-    "@oxlint-tsgolint/win32-x64": "npm:0.25.0"
+    "@oxlint-tsgolint/darwin-arm64": "npm:7.0.2008"
+    "@oxlint-tsgolint/darwin-x64": "npm:7.0.2008"
+    "@oxlint-tsgolint/linux-arm64": "npm:7.0.2008"
+    "@oxlint-tsgolint/linux-x64": "npm:7.0.2008"
+    "@oxlint-tsgolint/win32-arm64": "npm:7.0.2008"
+    "@oxlint-tsgolint/win32-x64": "npm:7.0.2008"
   dependenciesMeta:
     "@oxlint-tsgolint/darwin-arm64":
       optional: true
@@ -5003,8 +5003,8 @@ __metadata:
     "@oxlint-tsgolint/win32-x64":
       optional: true
   bin:
-    tsgolint: bin/tsgolint.js
-  checksum: 10c0/a3e5cd78f05c281c188cb12a2f5c988c4f055376e87fd270cc076c7eae0599e362c5a493cc2e3ab01cd26563c1ba4d5fb5ad98ef92e7a7c7090bfd42af6b06d2
+    tsgolint: ./bin/tsgolint.js
+  checksum: 10c0/bb7f67d540df7d91355eb8dcac38d56b2990d426e7ea58945c4a95f9894c1a24b9e9d7adf6c08049b77c65fa84105951290762f359e2f2d5f7b9429cb1d2d13d
   languageName: node
   linkType: hard
 

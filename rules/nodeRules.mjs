@@ -243,6 +243,10 @@ export const nodeRules = {
     // https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-global/timers.md
     'n/prefer-global/timers': 'error',
 
+    // Require a timeout or signal for child processes
+    // https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/require-child-process-timeout.md
+    'n/require-child-process-timeout': 'error',
+
     // Disallow hiding core modules
     // https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/no-hide-core-modules.md
     // Decision: deprecated rule

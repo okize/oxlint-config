@@ -292,6 +292,10 @@ export const typescriptRules = {
     // https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-call.html
     'typescript/no-unsafe-call': 'error',
 
+    // Disallow structurally compatible values where a class instance is expected
+    // https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-class-instance-assignment.html
+    'typescript/no-unsafe-class-instance-assignment': 'error',
+
     // Disallow unsafe declaration merging
     // https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-declaration-merging.html
     'typescript/no-unsafe-declaration-merging': 'error',

@@ -400,6 +400,11 @@ export const reactRules = {
     // Decision: handled by native react/exhaustive-deps
     '@eslint-react/exhaustive-deps': 'off',
 
+    // Verify Hook dependency lists, with support for custom Hooks and stable Hook results (experimental)
+    // https://eslint-react.xyz/docs/rules/unstable-exhaustive-deps
+    // Decision: handled by native react/exhaustive-deps
+    '@eslint-react/unstable-exhaustive-deps': 'off',
+
     // Validates against mutating props, state, and other immutable values
     // https://eslint-react.xyz/docs/rules/immutability
     // Decision: handled by native react/immutability

@@ -81,7 +81,7 @@
     "oxlint-tsgolint": "^7.0.2008",
     "storybook": "^10.5.2",
     "vite": "^8.3.8",
-    "vitest": "^4.1.10"
+    "vitest": "^5.1.2"
   },
   "peerDependencies": {
     "eslint": ">= 10.7.0",

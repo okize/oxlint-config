@@ -2,7 +2,7 @@
   "name": "@okize/oxlint-config",
   "version": "0.0.1",
   "type": "module",
-  "packageManager": "yarn@4.17.1",
+  "packageManager": "yarn@4.19.0",
   "description": "My preferred oxlint rule settings bundled into composable configs",
   "files": [
     "/configs",

@@ -198,7 +198,7 @@ export const typescriptRules = {
 
     // Disallow Promises in places not designed to handle them
     // https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-misused-promises.html
-    'typescript/no-misused-promises': 'error',
+    'typescript/no-misused-promises': ['error', { checksConditionals: { flagUnions: 'strict' } }],
 
     // Disallow using the spread operator when it might cause unexpected behavior
     // https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-misused-spread.html

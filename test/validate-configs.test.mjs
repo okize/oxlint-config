@@ -67,7 +67,7 @@ describe('oxlint accepts configs', () => {
 
   it.each(configFiles)('configs/%s is accepted by oxlint', { timeout: 60_000 }, (file) => {
     const configPath = resolve(root, 'configs', file);
-    const result = spawnSync('npx', ['oxlint', '-c', configPath, '.'], {
+    const result = spawnSync('yarn', ['oxlint', '-c', configPath, '.'], {
       cwd: root,
       encoding: 'utf8',
     });
@@ -83,7 +83,7 @@ describe('jsPlugins specifiers are absolute paths', () => {
   // from the consumer's root, not from this package. When a consumer's dependency
   // tree nests this package's plugins (e.g. its typescript version differs from
   // the consumer's), bare specifiers fail to resolve. Every specifier must be an
-  // absolute path resolved from within this package (see resolve-plugin.mjs).
+  // absolute path resolved from within this package (see resolvePlugin.mjs).
   it.each(configFiles)('configs/%s jsPlugins use absolute existing paths', async (file) => {
     const mod = await import(resolve(root, 'configs', file));
     const jsPlugins = [

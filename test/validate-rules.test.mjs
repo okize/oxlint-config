@@ -64,19 +64,21 @@ describe('peerDependency minimums match devDependency versions', () => {
 });
 
 describe('all native oxlint rules for enabled plugins are explicitly configured', () => {
-  // Parse `oxlint --rules` once and build a map: plugin -> Set<ruleName>
-  const rulesOutput = execSync('npx oxlint --rules', { encoding: 'utf8' });
+  // Parse `oxlint --rules` once and build a map: plugin -> Set<ruleName>.
+  // `--format=json` is required. oxlint selects a reporter automatically, and
+  // `--rules` is implemented only for the `default` and `json` reporters. It
+  // picks `github` when GITHUB_ACTIONS is set and `agent` when it detects an AI
+  // agent (CLAUDECODE, CLAUDE_CODE, AI_AGENT, CURSOR_AGENT, ...), so in CI and
+  // under an agent bare `--rules` exits 0 with no output. That would leave the
+  // map empty and pass every assertion below vacuously. Pinning the format also
+  // makes JSON.parse throw on empty output rather than silently yielding none.
+  const rulesOutput = execSync('yarn oxlint --rules --format=json', { encoding: 'utf8' });
   const oxlintRulesByPlugin = new Map();
-  for (const line of rulesOutput.split('\n')) {
-    // Format: | rule-name | plugin_source | Default | Enabled? | Fixable? |
-    const match = line.match(/^\|\s+(\S+)\s+\|\s+(\S+)\s+\|/);
-    if (!match) continue;
-    const [, ruleName, pluginSource] = match;
-    if (ruleName === 'Rule' || ruleName.startsWith('-')) continue;
-    if (!oxlintRulesByPlugin.has(pluginSource)) {
-      oxlintRulesByPlugin.set(pluginSource, new Set());
+  for (const { scope, value } of JSON.parse(rulesOutput)) {
+    if (!oxlintRulesByPlugin.has(scope)) {
+      oxlintRulesByPlugin.set(scope, new Set());
     }
-    oxlintRulesByPlugin.get(pluginSource).add(ruleName);
+    oxlintRulesByPlugin.get(scope).add(value);
   }
 
   // Normalize plugin name: config uses hyphens (jsx-a11y), oxlint uses underscores (jsx_a11y)
@@ -108,7 +110,13 @@ describe('all native oxlint rules for enabled plugins are explicitly configured'
 
       const normalizedPlugin = normalizePlugin(plugin);
       const nativeRules = oxlintRulesByPlugin.get(normalizedPlugin);
-      if (!nativeRules) return; // plugin not found in oxlint (should not happen)
+      // A declared plugin oxlint does not ship means a typo, or a plugin renamed
+      // or removed on upgrade. Fail rather than skip, so it cannot pass silently.
+      expect(
+        nativeRules,
+        `rules/${file} declares plugin "${plugin}", which oxlint does not ship. ` +
+          `Known plugins: ${[...oxlintRulesByPlugin.keys()].sort().join(', ')}`,
+      ).toBeDefined();
 
       const missing = [];
       for (const ruleName of nativeRules) {

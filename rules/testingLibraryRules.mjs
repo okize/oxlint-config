@@ -1,4 +1,4 @@
-import { resolvePlugin } from '../resolve-plugin.mjs';
+import { resolvePlugin } from '../resolvePlugin.mjs';
 
 // All testing-library + jest-dom rules loaded via jsPlugins (no native oxlint support).
 export const testingLibraryRules = {
@@ -149,6 +149,10 @@ export const testingLibraryRules = {
     // Prefer toBeInTheDocument over checking for null/truthy
     // https://github.com/testing-library/eslint-plugin-jest-dom/blob/main/docs/rules/prefer-in-document.md
     'eslint-plugin-jest-dom/prefer-in-document': 'error',
+
+    // Prefer toBePressed over checking aria-pressed attributes
+    // https://github.com/testing-library/eslint-plugin-jest-dom/blob/main/docs/rules/prefer-pressed.md
+    'eslint-plugin-jest-dom/prefer-pressed': 'error',
 
     // Prefer toBeRequired over checking attributes
     // https://github.com/testing-library/eslint-plugin-jest-dom/blob/main/docs/rules/prefer-required.md

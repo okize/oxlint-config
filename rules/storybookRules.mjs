@@ -1,4 +1,4 @@
-import { resolvePlugin } from '../resolve-plugin.mjs';
+import { resolvePlugin } from '../resolvePlugin.mjs';
 
 // All storybook rules loaded via jsPlugins (no native oxlint support).
 export const storybookRules = {

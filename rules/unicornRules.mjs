@@ -65,15 +65,43 @@ export const unicornRules = {
 
     // Enforce specific import styles per module
     // https://oxc.rs/docs/guide/usage/linter/rules/unicorn/import-style.html
-    // Override built-in defaults: this rule ships preferring default imports
-    // for `chalk`, `path`, and `node:path`. We require named imports instead.
+    // Every option is set explicitly, including the four that match oxlint's
+    // default, so an upgrade cannot change consumer behavior without a diff
+    // here. `styles` is the complete set — nothing is inherited.
+    // - `node:path` and `node:util` are the only node builtins the rule
+    //   constrains at all (default-only and named-only respectively); `fs`,
+    //   `os`, `crypto`, `url`, `events` and the rest are unconstrained. Named
+    //   is our style, so both are set to named. Bare `path` needs no entry —
+    //   `unicorn/prefer-node-protocol` already rejects the non-prefixed form.
+    // - `chalk` ships default-only, which is right for the pre-built instance
+    //   (chalk's whole main API) but wrong for `import { Chalk } from 'chalk'`,
+    //   the class you instantiate for a custom instance. Both are legitimate.
     'unicorn/import-style': [
       'error',
       {
+        // Matches oxlint's default. Static imports are the primary surface.
+        checkImport: true,
+
+        // Matches oxlint's default. Covers `await import('node:path')`.
+        checkDynamicImport: true,
+
+        // Matches oxlint's default. Covers `require('node:path')` in CJS.
+        checkRequire: true,
+
+        // Decision: matches oxlint's default. The only form it adds is
+        // `export * from`, already an error via
+        // `import-x-js/avoid-re-export-all` — enabling it double-reports.
+        checkExportFrom: false,
+
+        // Differs from oxlint's default of `true`. Declaring the full style set
+        // instead of merging into the built-ins means an upgrade that adds or
+        // changes a built-in style cannot silently move consumer behavior.
+        extendDefaultStyles: false,
+
         styles: {
           'node:path': { named: true, default: false },
-          path: { named: true, default: false },
-          chalk: { named: true, default: false },
+          'node:util': { named: true, default: false },
+          chalk: { named: true, default: true },
         },
       },
     ],

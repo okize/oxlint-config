@@ -1,4 +1,4 @@
-import { resolvePlugin } from '../resolve-plugin.mjs';
+import { resolvePlugin } from '../resolvePlugin.mjs';
 
 // Native oxlint react rules + @eslint-react/eslint-plugin via jsPlugins for rules
 // without native equivalents.
@@ -249,6 +249,11 @@ export const reactRules = {
     // Decision: requires project-specific configuration
     'react/forbid-elements': 'off',
 
+    // Enforce a consistent function form for function components
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/function-component-definition.html
+    // Decision: style preference
+    'react/function-component-definition': 'off',
+
     // Enforce destructuring assignment of useState hook
     // https://oxc.rs/docs/guide/usage/linter/rules/react/hook-use-state.html
     // Decision: too opinionated for general use
@@ -274,9 +279,104 @@ export const reactRules = {
     // Decision: too opinionated for general use
     'react/state-in-constructor': 'off',
 
-    // Surface code that violates the Rules of React the compiler relies on
-    // https://oxc.rs/docs/guide/usage/linter/rules/react/react-compiler.html
-    'react/react-compiler': 'error',
+    // --- React Compiler rules ---
+
+    // Validate usage of Error Boundaries instead of try/catch for child errors
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/error-boundaries.html
+    'react/error-boundaries': 'error',
+
+    // Restrict reading or writing mutable globals during render
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/globals.html
+    'react/globals': 'error',
+
+    // Disallow mutating props, state, and other immutable values
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/immutability.html
+    'react/immutability': 'error',
+
+    // Flag library APIs known to be incompatible with memoization
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/incompatible-library.html
+    'react/incompatible-library': 'error',
+
+    // Ensure the compiler's inferred dependencies preserve existing manual memoization
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/preserve-manual-memoization.html
+    'react/preserve-manual-memoization': 'error',
+
+    // Validate that components and hooks are pure
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/purity.html
+    'react/purity': 'error',
+
+    // Validate that refs are not read or written during render
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/refs.html
+    'react/refs': 'error',
+
+    // Disallow calling setState synchronously in an effect
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/set-state-in-effect.html
+    'react/set-state-in-effect': 'error',
+
+    // Disallow setting state during render
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/set-state-in-render.html
+    'react/set-state-in-render': 'error',
+
+    // Enforce static component definitions
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/static-components.html
+    'react/static-components': 'error',
+
+    // Disallow syntax that React does not support
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/unsupported-syntax.html
+    'react/unsupported-syntax': 'error',
+
+    // Validate that useMemo callbacks return a value
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/use-memo.html
+    'react/use-memo': 'error',
+
+    // Validate that useMemo results are actually used
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/void-use-memo.html
+    'react/void-use-memo': 'error',
+
+    // Compiler-powered Rules of Hooks validation
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/hooks.html
+    // Decision: handled by native react/rules-of-hooks
+    'react/hooks': 'off',
+
+    // Validate effect dependency arrays are exhaustive without extraneous values
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/exhaustive-effect-dependencies.html
+    // Decision: handled by native react/exhaustive-deps
+    'react/exhaustive-effect-dependencies': 'off',
+
+    // Validate useMemo/useCallback dependency lists
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/memo-dependencies.html
+    // Decision: handled by native react/exhaustive-deps
+    'react/memo-dependencies': 'off',
+
+    // Report internal React Compiler invariant violations
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/invariant.html
+    // Decision: reports bugs in the compiler itself, not code defects
+    'react/invariant': 'off',
+
+    // Report code the React Compiler cannot analyze yet
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/todo.html
+    // Decision: reports compiler bail-outs, not code defects
+    'react/todo': 'off',
+
+    // Report invalid JavaScript the compiler encountered (e.g. const reassignment)
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/syntax.html
+    // Decision: invalid JS is already reported by base eslint rules like no-const-assign
+    'react/syntax': 'off',
+
+    // Disallow deriving values from state inside an effect and storing them back into state
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/no-deriving-state-in-effects.html
+    // Decision: upstream preset keeps this off; enable if we adopt the React Compiler
+    'react/no-deriving-state-in-effects': 'off',
+
+    // Report suppressions of React rules inside components (compiler skips those functions)
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/rule-suppression.html
+    // Decision: upstream preset keeps this off; enable if we adopt the React Compiler
+    'react/rule-suppression': 'off',
+
+    // Disallow calling capitalized functions directly during render
+    // https://oxc.rs/docs/guide/usage/linter/rules/react/capitalized-calls.html
+    // Decision: upstream preset keeps this off; enable if we adopt the React Compiler
+    'react/capitalized-calls': 'off',
 
     // Disallow string literals in JSX
     // https://oxc.rs/docs/guide/usage/linter/rules/react/jsx-no-literals.html
@@ -287,11 +387,13 @@ export const reactRules = {
 
     // Validates usage of Error Boundaries instead of try/catch for child errors
     // https://eslint-react.xyz/docs/rules/error-boundaries
-    '@eslint-react/error-boundaries': 'error',
+    // Decision: handled by native react/error-boundaries
+    '@eslint-react/error-boundaries': 'off',
 
     // Restricts usage of global variables in React components
     // https://eslint-react.xyz/docs/rules/globals
-    '@eslint-react/globals': 'error',
+    // Decision: handled by native react/globals
+    '@eslint-react/globals': 'off',
 
     // Verify the list of the dependencies for Hooks like useEffect and similar
     // https://eslint-react.xyz/docs/rules/exhaustive-deps
@@ -300,7 +402,8 @@ export const reactRules = {
 
     // Validates against mutating props, state, and other immutable values
     // https://eslint-react.xyz/docs/rules/immutability
-    '@eslint-react/immutability': 'error',
+    // Decision: handled by native react/immutability
+    '@eslint-react/immutability': 'off',
 
     // Prevent accidental JS comments from being injected into JSX as text
     // https://eslint-react.xyz/docs/rules/jsx-no-comment-textnodes
@@ -326,7 +429,8 @@ export const reactRules = {
 
     // Disallow unnecessary fragments
     // https://eslint-react.xyz/docs/rules/jsx-no-useless-fragment
-    '@eslint-react/jsx-no-useless-fragment': 'error',
+    // Decision: handled by native react/jsx-no-useless-fragment
+    '@eslint-react/jsx-no-useless-fragment': 'off',
 
     // Prevent leaked semicolons in JSX
     // https://eslint-react.xyz/docs/rules/jsx-no-leaked-semicolon
@@ -515,11 +619,13 @@ export const reactRules = {
 
     // Validates that components/hooks are pure
     // https://eslint-react.xyz/docs/rules/purity
-    '@eslint-react/purity': 'error',
+    // Decision: handled by native react/purity
+    '@eslint-react/purity': 'off',
 
     // Validates correct usage of refs, not reading/writing during render
     // https://eslint-react.xyz/docs/rules/refs
-    '@eslint-react/refs': 'error',
+    // Decision: handled by native react/refs
+    '@eslint-react/refs': 'off',
 
     // Enforce Rules of Hooks
     // https://eslint-react.xyz/docs/rules/rules-of-hooks
@@ -528,23 +634,28 @@ export const reactRules = {
 
     // Validates against calling setState synchronously in an effect
     // https://eslint-react.xyz/docs/rules/set-state-in-effect
-    '@eslint-react/set-state-in-effect': 'error',
+    // Decision: handled by native react/set-state-in-effect
+    '@eslint-react/set-state-in-effect': 'off',
 
     // Validates against setting state during render
     // https://eslint-react.xyz/docs/rules/set-state-in-render
-    '@eslint-react/set-state-in-render': 'error',
+    // Decision: handled by native react/set-state-in-render
+    '@eslint-react/set-state-in-render': 'off',
 
     // Enforces static component definitions
     // https://eslint-react.xyz/docs/rules/static-components
-    '@eslint-react/static-components': 'error',
+    // Decision: handled by native react/static-components
+    '@eslint-react/static-components': 'off',
 
     // Validates against syntax that React does not support
     // https://eslint-react.xyz/docs/rules/unsupported-syntax
-    '@eslint-react/unsupported-syntax': 'error',
+    // Decision: handled by native react/unsupported-syntax
+    '@eslint-react/unsupported-syntax': 'off',
 
     // Validates usage of useMemo with a return value
     // https://eslint-react.xyz/docs/rules/use-memo
-    '@eslint-react/use-memo': 'error',
+    // Decision: handled by native react/use-memo
+    '@eslint-react/use-memo': 'off',
 
     // Ensure destructuring and symmetric naming of useState hook value and setter
     // https://eslint-react.xyz/docs/rules/use-state

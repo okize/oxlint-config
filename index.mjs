@@ -1,18 +1,18 @@
 // Rules
-export { baseRules } from './rules/base.mjs';
-export { importRules } from './rules/import.mjs';
-export { promiseRules } from './rules/promise.mjs';
-export { typescriptRules } from './rules/typescript.mjs';
-export { reactRules } from './rules/react.mjs';
-export { reactA11yRules } from './rules/react-a11y.mjs';
-export { nodeRules } from './rules/node.mjs';
-export { unicornRules } from './rules/unicorn.mjs';
-export { vitestRules } from './rules/vitest.mjs';
-export { playwrightRules } from './rules/playwright.mjs';
-export { storybookRules } from './rules/storybook.mjs';
-export { styledComponentsRules } from './rules/styled-components.mjs';
-export { testingLibraryRules } from './rules/testing-library.mjs';
-export { barrelFilesRules } from './rules/barrel-files.mjs';
+export { baseRules } from './rules/baseRules.mjs';
+export { importRules } from './rules/importRules.mjs';
+export { promiseRules } from './rules/promiseRules.mjs';
+export { typescriptRules } from './rules/typescriptRules.mjs';
+export { reactRules } from './rules/reactRules.mjs';
+export { reactA11yRules } from './rules/reactA11yRules.mjs';
+export { nodeRules } from './rules/nodeRules.mjs';
+export { unicornRules } from './rules/unicornRules.mjs';
+export { vitestRules } from './rules/vitestRules.mjs';
+export { playwrightRules } from './rules/playwrightRules.mjs';
+export { storybookRules } from './rules/storybookRules.mjs';
+export { styledComponentsRules } from './rules/styledComponentsRules.mjs';
+export { testingLibraryRules } from './rules/testingLibraryRules.mjs';
+export { customRules } from './rules/customRules.mjs';
 
 // Configs
 export { default as javascriptConfig } from './configs/javascript.mjs';

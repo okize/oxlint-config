@@ -1,4 +1,4 @@
-import { resolvePlugin } from '../resolve-plugin.mjs';
+import { resolvePlugin } from '../resolvePlugin.mjs';
 
 // All playwright rules loaded via jsPlugins (no native oxlint support).
 export const playwrightRules = {
@@ -196,6 +196,30 @@ export const playwrightRules = {
     // https://github.com/playwright-community/eslint-plugin-playwright/blob/main/docs/rules/no-duplicate-slow.md
     'eslint-plugin-playwright/no-duplicate-slow': 'error',
 
+    // Disallow assertions on a Locator that can never fail
+    // https://github.com/playwright-community/eslint-plugin-playwright/blob/main/docs/rules/no-unnecessary-assertions.md
+    'eslint-plugin-playwright/no-unnecessary-assertions': 'error',
+
+    // Disallow identical test and describe titles
+    // https://github.com/playwright-community/eslint-plugin-playwright/blob/main/docs/rules/no-identical-title.md
+    'eslint-plugin-playwright/no-identical-title': 'error',
+
+    // Disallow returning from a test body
+    // https://github.com/playwright-community/eslint-plugin-playwright/blob/main/docs/rules/no-test-return-statement.md
+    'eslint-plugin-playwright/no-test-return-statement': 'error',
+
+    // Disallow exports in files containing tests
+    // https://github.com/playwright-community/eslint-plugin-playwright/blob/main/docs/rules/no-export.md
+    'eslint-plugin-playwright/no-export': 'error',
+
+    // Disallow inline numeric timeout values
+    // https://github.com/playwright-community/eslint-plugin-playwright/blob/main/docs/rules/no-magic-timeouts.md
+    'eslint-plugin-playwright/no-magic-timeouts': 'error',
+
+    // Require a reason on conditional skip and fixme annotations
+    // https://github.com/playwright-community/eslint-plugin-playwright/blob/main/docs/rules/require-annotation-reason.md
+    'eslint-plugin-playwright/require-annotation-reason': 'error',
+
     // Enforce blank lines between test blocks
     // https://github.com/playwright-community/eslint-plugin-playwright/blob/main/docs/rules/consistent-spacing-between-blocks.md
     // Decision: style preference, left to a formatter
@@ -245,5 +269,20 @@ export const playwrightRules = {
     // https://github.com/playwright-community/eslint-plugin-playwright/blob/main/docs/rules/require-to-pass-timeout.md
     // Decision: too strict for general use, matching vitest/require-test-timeout
     'eslint-plugin-playwright/require-to-pass-timeout': 'off',
+
+    // Disallow the timeout option on actions
+    // https://github.com/playwright-community/eslint-plugin-playwright/blob/main/docs/rules/no-action-timeout.md
+    // Decision: per-call timeouts are a documented Playwright option; inline literals are covered by no-magic-timeouts
+    'eslint-plugin-playwright/no-action-timeout': 'off',
+
+    // Disallow template literals in titles
+    // https://github.com/playwright-community/eslint-plugin-playwright/blob/main/docs/rules/no-template-literal-title.md
+    // Decision: dynamic titles are allowed, matching vitest/valid-title allowArguments
+    'eslint-plugin-playwright/no-template-literal-title': 'off',
+
+    // Require tests to end with an assertion
+    // https://github.com/playwright-community/eslint-plugin-playwright/blob/main/docs/rules/prefer-ending-with-an-expect.md
+    // Decision: page-object assertion helpers are not recognized without project-specific options
+    'eslint-plugin-playwright/prefer-ending-with-an-expect': 'off',
   },
 };

@@ -1,5 +1,5 @@
 import { defineConfig } from 'oxlint';
-import { nodeRules } from '../rules/node.mjs';
+import { nodeRules } from '../rules/nodeRules.mjs';
 
 export default defineConfig({
   overrides: [

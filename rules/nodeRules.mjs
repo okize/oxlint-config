@@ -1,4 +1,4 @@
-import { resolvePlugin } from '../resolve-plugin.mjs';
+import { resolvePlugin } from '../resolvePlugin.mjs';
 
 // Native oxlint node rules + eslint-plugin-n via jsPlugins for rules
 // without native equivalents.
@@ -13,6 +13,10 @@ export const nodeRules = {
     // Require error handling in callbacks
     // https://oxc.rs/docs/guide/usage/linter/rules/node/handle-callback-err.html
     'node/handle-callback-err': 'error',
+
+    // Enforce either module.exports or exports
+    // https://oxc.rs/docs/guide/usage/linter/rules/node/exports-style.html
+    'node/exports-style': ['error', 'module.exports'],
 
     // Disallow the assignment to exports
     // https://oxc.rs/docs/guide/usage/linter/rules/node/no-exports-assign.html
@@ -43,6 +47,10 @@ export const nodeRules = {
     // https://oxc.rs/docs/guide/usage/linter/rules/node/no-sync.html
     // Decision: too restrictive for general use
     'node/no-sync': 'off',
+
+    // Disallow top-level await
+    // https://oxc.rs/docs/guide/usage/linter/rules/node/no-top-level-await.html
+    'node/no-top-level-await': ['error', { ignoreBin: true }],
 
     //eslint-plugin-n rules via jsPlugins
 
@@ -80,7 +88,8 @@ export const nodeRules = {
 
     // Disallow top-level await
     // https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/no-top-level-await.md
-    'n/no-top-level-await': ['error', { ignoreBin: true }],
+    // Decision: handled by native node/no-top-level-await
+    'n/no-top-level-await': 'off',
 
     // Require return statements after callbacks
     // https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/callback-return.md
@@ -89,7 +98,8 @@ export const nodeRules = {
 
     // Enforce either module.exports or exports
     // https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/exports-style.md
-    'n/exports-style': 'error',
+    // Decision: handled by native node/exports-style
+    'n/exports-style': 'off',
 
     // Require require() to be called in the top-level module scope
     // https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/global-require.md
@@ -145,6 +155,10 @@ export const nodeRules = {
     // https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-promises/fs.md
     'n/prefer-promises/fs': 'error',
 
+    // Enforce using node:assert/strict instead of the legacy non-strict node:assert
+    // https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-import/assert-strict.md
+    'n/prefer-import/assert-strict': 'error',
+
     // Require correct usage of hashbang
     // https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/hashbang.md
     'n/hashbang': 'error',
@@ -152,6 +166,11 @@ export const nodeRules = {
     // Enforce using the node: protocol when importing Node.js builtins
     // https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-node-protocol.md
     'n/prefer-node-protocol': 'error',
+
+    // Enforce process.getBuiltinModule() over require()/awaited import() of Node.js builtins
+    // https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/prefer-process-get-builtin-module.md
+    // Decision: too opinionated; flags idiomatic require() of builtins in CommonJS and has no auto-fix
+    'n/prefer-process-get-builtin-module': 'off',
 
     // Require error handling in callbacks
     // https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/handle-callback-err.md

@@ -12,7 +12,7 @@
     "/index.d.mts",
     "/oxfmtConfig.mjs",
     "/oxfmtConfig.d.mts",
-    "/resolve-plugin.mjs"
+    "/resolvePlugin.mjs"
   ],
   "exports": {
     "./package.json": "./package.json",
@@ -33,20 +33,20 @@
       "types": "./oxfmtConfig.d.mts",
       "default": "./oxfmtConfig.mjs"
     },
-    "./rules/barrel-files": "./rules/barrel-files.mjs",
-    "./rules/base": "./rules/base.mjs",
-    "./rules/import": "./rules/import.mjs",
-    "./rules/node": "./rules/node.mjs",
-    "./rules/playwright": "./rules/playwright.mjs",
-    "./rules/promise": "./rules/promise.mjs",
-    "./rules/react-a11y": "./rules/react-a11y.mjs",
-    "./rules/react": "./rules/react.mjs",
-    "./rules/storybook": "./rules/storybook.mjs",
-    "./rules/styled-components": "./rules/styled-components.mjs",
-    "./rules/testing-library": "./rules/testing-library.mjs",
-    "./rules/typescript": "./rules/typescript.mjs",
-    "./rules/unicorn": "./rules/unicorn.mjs",
-    "./rules/vitest": "./rules/vitest.mjs"
+    "./rules/base": "./rules/baseRules.mjs",
+    "./rules/custom": "./rules/customRules.mjs",
+    "./rules/import": "./rules/importRules.mjs",
+    "./rules/node": "./rules/nodeRules.mjs",
+    "./rules/playwright": "./rules/playwrightRules.mjs",
+    "./rules/promise": "./rules/promiseRules.mjs",
+    "./rules/react-a11y": "./rules/reactA11yRules.mjs",
+    "./rules/react": "./rules/reactRules.mjs",
+    "./rules/storybook": "./rules/storybookRules.mjs",
+    "./rules/styled-components": "./rules/styledComponentsRules.mjs",
+    "./rules/testing-library": "./rules/testingLibraryRules.mjs",
+    "./rules/typescript": "./rules/typescriptRules.mjs",
+    "./rules/unicorn": "./rules/unicornRules.mjs",
+    "./rules/vitest": "./rules/vitestRules.mjs"
   },
   "scripts": {
     "changeset": "changeset",

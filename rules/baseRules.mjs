@@ -276,6 +276,11 @@ export const baseRules = {
     // https://oxc.rs/docs/guide/usage/linter/rules/eslint/grouped-accessor-pairs.html
     'eslint/grouped-accessor-pairs': 'error',
 
+    // Disallow specified identifiers
+    // https://oxc.rs/docs/guide/usage/linter/rules/eslint/id-denylist.html
+    // Decision: requires a project-specific identifier list; too opinionated for a shared config
+    'eslint/id-denylist': 'off',
+
     // Require identifiers to match a specified regular expression
     // https://oxc.rs/docs/guide/usage/linter/rules/eslint/id-match.html
     // Decision: too opinionated for general use
@@ -577,6 +582,10 @@ export const baseRules = {
     // https://oxc.rs/docs/guide/usage/linter/rules/eslint/no-with.html
     'eslint/no-with': 'error',
 
+    // Enforce variables to be declared separately
+    // https://oxc.rs/docs/guide/usage/linter/rules/eslint/one-var.html
+    'eslint/one-var': ['error', 'never'],
+
     // Require or disallow assignment operator shorthand where possible
     // https://oxc.rs/docs/guide/usage/linter/rules/eslint/operator-assignment.html
     'eslint/operator-assignment': ['error', 'always'],
@@ -857,6 +866,10 @@ export const baseRules = {
     // https://oxc.rs/docs/guide/usage/linter/rules/oxc/bad-object-literal-comparison.html
     'oxc/bad-object-literal-comparison': 'error',
 
+    // Disallow matchAll with regex missing the global flag (throws at runtime)
+    // https://oxc.rs/docs/guide/usage/linter/rules/oxc/bad-match-all-arg.html
+    'oxc/bad-match-all-arg': 'error',
+
     // Disallow replaceAll with regex missing the global flag (throws at runtime)
     // https://oxc.rs/docs/guide/usage/linter/rules/oxc/bad-replace-all-arg.html
     'oxc/bad-replace-all-arg': 'error',
@@ -922,7 +935,7 @@ export const baseRules = {
 
     // Disallow barrel files (index files that re-export from other modules)
     // https://oxc.rs/docs/guide/usage/linter/rules/oxc/no-barrel-file.html
-    // Decision: handled by barrel-files/avoid-re-export-all and barrel-files/avoid-namespace-import
+    // Decision: handled by import-x-js/avoid-re-export-all and import-x-js/avoid-namespace-import
     'oxc/no-barrel-file': 'off',
 
     // Disallow TypeScript const enums

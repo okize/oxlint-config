@@ -20,7 +20,7 @@ export declare const playwrightRules: RuleFile;
 export declare const storybookRules: RuleFile;
 export declare const styledComponentsRules: RuleFile;
 export declare const testingLibraryRules: RuleFile;
-export declare const barrelFilesRules: RuleFile;
+export declare const customRules: RuleFile;
 
 // Configs
 export declare const javascriptConfig: OxlintConfig;

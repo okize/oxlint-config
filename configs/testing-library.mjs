@@ -1,5 +1,5 @@
 import { defineConfig } from 'oxlint';
-import { testingLibraryRules } from '../rules/testing-library.mjs';
+import { testingLibraryRules } from '../rules/testingLibraryRules.mjs';
 
 export default defineConfig({
   overrides: [

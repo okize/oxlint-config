@@ -1,5 +1,5 @@
 import { defineConfig } from 'oxlint';
-import { playwrightRules } from '../rules/playwright.mjs';
+import { playwrightRules } from '../rules/playwrightRules.mjs';
 
 export default defineConfig({
   overrides: [

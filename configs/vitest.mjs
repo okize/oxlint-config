@@ -1,5 +1,5 @@
 import { defineConfig } from 'oxlint';
-import { vitestRules } from '../rules/vitest.mjs';
+import { vitestRules } from '../rules/vitestRules.mjs';
 
 export default defineConfig({
   overrides: [

@@ -1,4 +1,4 @@
-import { resolvePlugin } from '../resolve-plugin.mjs';
+import { resolvePlugin } from '../resolvePlugin.mjs';
 
 // Native oxlint vitest rules + jsPlugin rules from @vitest/eslint-plugin and eslint-plugin-no-only-tests
 export const vitestRules = {
@@ -35,6 +35,10 @@ export const vitestRules = {
     // Enforce padding around afterAll blocks
     // https://oxc.rs/docs/guide/usage/linter/rules/vitest/padding-around-after-all-blocks.html
     'vitest/padding-around-after-all-blocks': 'error',
+
+    // Enforce padding around test blocks
+    // https://oxc.rs/docs/guide/usage/linter/rules/vitest/padding-around-test-blocks.html
+    'vitest/padding-around-test-blocks': 'error',
 
     // Disallow conditional tests
     // https://oxc.rs/docs/guide/usage/linter/rules/vitest/no-conditional-in-test.html
@@ -509,7 +513,8 @@ export const vitestRules = {
 
     // Enforce padding around test blocks
     // https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/padding-around-test-blocks.md
-    'vitest-js/padding-around-test-blocks': 'error',
+    // Decision: handled by native vitest/padding-around-test-blocks
+    'vitest-js/padding-around-test-blocks': 'off',
 
     // Prefer toHaveBeenCalledOnce() over toHaveBeenCalledTimes(1)
     // https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-called-once.md

@@ -1,4 +1,4 @@
-import { resolvePlugin } from '../resolve-plugin.mjs';
+import { resolvePlugin } from '../resolvePlugin.mjs';
 
 // Native oxlint import rules + eslint-plugin-import-x via jsPlugins for rules
 // without native equivalents.
@@ -398,5 +398,26 @@ export const importRules = {
     // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/imports-first.md
     // Decision: deprecated alias for first, handled by native import/first
     'import-x-js/imports-first': 'off',
+
+    // Barrel file rules, merged into import-x from eslint-plugin-barrel-files
+    // see: https://marvinh.dev/blog/speeding-up-javascript-ecosystem-part-7/
+
+    // Forbid barrel files
+    // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/avoid-barrel-files.md
+    // Decision: too opinionated for general use
+    'import-x-js/avoid-barrel-files': 'off',
+
+    // Forbid importing barrel files
+    // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/avoid-importing-barrel-files.md
+    // Decision: too opinionated for general use
+    'import-x-js/avoid-importing-barrel-files': 'off',
+
+    // Forbid namespace imports
+    // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/avoid-namespace-import.md
+    'import-x-js/avoid-namespace-import': 'error',
+
+    // Forbid re-exporting * from a module
+    // https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/avoid-re-export-all.md
+    'import-x-js/avoid-re-export-all': 'error',
   },
 };

@@ -148,6 +148,10 @@ export const typescriptRules = {
     // https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-empty-object-type.html
     'typescript/no-empty-object-type': 'error',
 
+    // Disallow type operations that resolve to the empty object type
+    // https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-generated-empty-object-type.html
+    'typescript/no-generated-empty-object-type': 'error',
+
     // Disallow the any type
     // https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-explicit-any.html
     'typescript/no-explicit-any': 'error',
@@ -291,6 +295,10 @@ export const typescriptRules = {
     // Disallow unsafe declaration merging
     // https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-declaration-merging.html
     'typescript/no-unsafe-declaration-merging': 'error',
+
+    // Disallow assigning a non-enum value where an enum value is expected
+    // https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-enum-assignment.html
+    'typescript/no-unsafe-enum-assignment': 'error',
 
     // Disallow comparing an enum value with a non-enum value
     // https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-enum-comparison.html

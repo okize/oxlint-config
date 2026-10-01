@@ -1,0 +1,22 @@
+{
+  "name": "@okize/oxlint-config",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json"
+  },
+  "description": "My preferred oxlint rule settings bundled into composable configs",
+  "homepage": "https://github.com/okize/oxlint-config#readme",
+  "bugs": {
+    "url": "https://github.com/okize/oxlint-config/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okize/oxlint-config.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

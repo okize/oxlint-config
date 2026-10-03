@@ -18,5 +18,6 @@
   "author": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
+  "packageManager": "yarn@4.17.1"
 }

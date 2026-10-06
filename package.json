@@ -22,6 +22,7 @@
   "packageManager": "yarn@4.17.1",
   "devDependencies": {
     "oxfmt": "^0.59.0",
-    "oxlint": "^1.74.0"
+    "oxlint": "^1.74.0",
+    "oxlint-tsgolint": "^0.25.0"
   }
 }

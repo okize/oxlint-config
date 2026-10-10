@@ -21,6 +21,7 @@
   },
   "packageManager": "yarn@4.17.1",
   "devDependencies": {
+    "@changesets/changelog-github": "^0.7.0",
     "eslint": "^10.7.0",
     "oxfmt": "^0.59.0",
     "oxlint": "^1.74.0",

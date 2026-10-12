@@ -2,24 +2,17 @@
   "name": "@okize/oxlint-config",
   "version": "0.0.1",
   "type": "module",
+  "packageManager": "yarn@4.17.1",
   "exports": {
     "./package.json": "./package.json"
   },
   "description": "My preferred oxlint rule settings bundled into composable configs",
-  "homepage": "https://github.com/okize/oxlint-config#readme",
-  "bugs": {
-    "url": "https://github.com/okize/oxlint-config/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/okize/oxlint-config.git"
-  },
-  "license": "MIT",
-  "author": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "packageManager": "yarn@4.17.1",
+  "dependencies": {
+    "typescript": "^6.0.3"
+  },
   "devDependencies": {
     "@changesets/changelog-github": "^0.7.0",
     "@changesets/cli": "^2.31.1",
@@ -29,5 +22,15 @@
     "oxlint-tsgolint": "^0.25.0",
     "storybook": "^10.5.2",
     "vitest": "^4.1.10"
-  }
+  },
+  "homepage": "https://github.com/okize/oxlint-config#readme",
+  "bugs": {
+    "url": "https://github.com/okize/oxlint-config/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okize/oxlint-config.git"
+  },
+  "license": "MIT",
+  "author": "Morgan Wigmanich"
 }

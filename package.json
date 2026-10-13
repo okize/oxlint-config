@@ -11,6 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "confusing-browser-globals": "^1.0.11",
     "typescript": "^6.0.3"
   },
   "devDependencies": {

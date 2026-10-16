@@ -301,7 +301,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emnapi/core@npm:1.11.2":
+"@emnapi/core@npm:1.11.2, @emnapi/core@npm:^1.4.3":
   version: 1.11.2
   resolution: "@emnapi/core@npm:1.11.2"
   dependencies:
@@ -330,7 +330,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emnapi/runtime@npm:1.11.2":
+"@emnapi/runtime@npm:1.11.2, @emnapi/runtime@npm:^1.4.3":
   version: 1.11.2
   resolution: "@emnapi/runtime@npm:1.11.2"
   dependencies:
@@ -825,6 +825,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@napi-rs/wasm-runtime@npm:^0.2.4":
+  version: 0.2.12
+  resolution: "@napi-rs/wasm-runtime@npm:0.2.12"
+  dependencies:
+    "@emnapi/core": "npm:^1.4.3"
+    "@emnapi/runtime": "npm:^1.4.3"
+    "@tybys/wasm-util": "npm:^0.10.0"
+  checksum: 10c0/6d07922c0613aab30c6a497f4df297ca7c54e5b480e00035e0209b872d5c6aab7162fc49477267556109c2c7ed1eb9c65a174e27e9b87568106a87b0a6e3ca7d
+  languageName: node
+  linkType: hard
+
 "@napi-rs/wasm-runtime@npm:^1.1.4, @napi-rs/wasm-runtime@npm:^1.1.6":
   version: 1.1.6
   resolution: "@napi-rs/wasm-runtime@npm:1.1.6"
@@ -874,6 +885,7 @@ __metadata:
     "@vitest/eslint-plugin": "npm:^1.6.23"
     confusing-browser-globals: "npm:^1.0.11"
     eslint: "npm:^10.7.0"
+    eslint-plugin-barrel-files: "npm:^3.0.1"
     oxfmt: "npm:^0.59.0"
     oxlint: "npm:^1.74.0"
     oxlint-tsgolint: "npm:^0.25.0"
@@ -1055,10 +1067,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@oxc-resolver/binding-darwin-arm64@npm:1.12.0":
+  version: 1.12.0
+  resolution: "@oxc-resolver/binding-darwin-arm64@npm:1.12.0"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
 "@oxc-resolver/binding-darwin-arm64@npm:11.24.2":
   version: 11.24.2
   resolution: "@oxc-resolver/binding-darwin-arm64@npm:11.24.2"
   conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@oxc-resolver/binding-darwin-x64@npm:1.12.0":
+  version: 1.12.0
+  resolution: "@oxc-resolver/binding-darwin-x64@npm:1.12.0"
+  conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
@@ -1069,10 +1095,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@oxc-resolver/binding-freebsd-x64@npm:1.12.0":
+  version: 1.12.0
+  resolution: "@oxc-resolver/binding-freebsd-x64@npm:1.12.0"
+  conditions: os=freebsd & cpu=x64
+  languageName: node
+  linkType: hard
+
 "@oxc-resolver/binding-freebsd-x64@npm:11.24.2":
   version: 11.24.2
   resolution: "@oxc-resolver/binding-freebsd-x64@npm:11.24.2"
   conditions: os=freebsd & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@oxc-resolver/binding-linux-arm-gnueabihf@npm:1.12.0":
+  version: 1.12.0
+  resolution: "@oxc-resolver/binding-linux-arm-gnueabihf@npm:1.12.0"
+  conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
@@ -1090,10 +1130,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@oxc-resolver/binding-linux-arm64-gnu@npm:1.12.0":
+  version: 1.12.0
+  resolution: "@oxc-resolver/binding-linux-arm64-gnu@npm:1.12.0"
+  conditions: os=linux & cpu=arm64 & libc=glibc
+  languageName: node
+  linkType: hard
+
 "@oxc-resolver/binding-linux-arm64-gnu@npm:11.24.2":
   version: 11.24.2
   resolution: "@oxc-resolver/binding-linux-arm64-gnu@npm:11.24.2"
   conditions: os=linux & cpu=arm64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@oxc-resolver/binding-linux-arm64-musl@npm:1.12.0":
+  version: 1.12.0
+  resolution: "@oxc-resolver/binding-linux-arm64-musl@npm:1.12.0"
+  conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
@@ -1132,10 +1186,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@oxc-resolver/binding-linux-x64-gnu@npm:1.12.0":
+  version: 1.12.0
+  resolution: "@oxc-resolver/binding-linux-x64-gnu@npm:1.12.0"
+  conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
 "@oxc-resolver/binding-linux-x64-gnu@npm:11.24.2":
   version: 11.24.2
   resolution: "@oxc-resolver/binding-linux-x64-gnu@npm:11.24.2"
   conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@oxc-resolver/binding-linux-x64-musl@npm:1.12.0":
+  version: 1.12.0
+  resolution: "@oxc-resolver/binding-linux-x64-musl@npm:1.12.0"
+  conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
@@ -1153,6 +1221,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@oxc-resolver/binding-wasm32-wasi@npm:1.12.0":
+  version: 1.12.0
+  resolution: "@oxc-resolver/binding-wasm32-wasi@npm:1.12.0"
+  dependencies:
+    "@napi-rs/wasm-runtime": "npm:^0.2.4"
+  conditions: cpu=wasm32
+  languageName: node
+  linkType: hard
+
 "@oxc-resolver/binding-wasm32-wasi@npm:11.24.2":
   version: 11.24.2
   resolution: "@oxc-resolver/binding-wasm32-wasi@npm:11.24.2"
@@ -1164,10 +1241,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@oxc-resolver/binding-win32-arm64-msvc@npm:1.12.0":
+  version: 1.12.0
+  resolution: "@oxc-resolver/binding-win32-arm64-msvc@npm:1.12.0"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
 "@oxc-resolver/binding-win32-arm64-msvc@npm:11.24.2":
   version: 11.24.2
   resolution: "@oxc-resolver/binding-win32-arm64-msvc@npm:11.24.2"
   conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@oxc-resolver/binding-win32-x64-msvc@npm:1.12.0":
+  version: 1.12.0
+  resolution: "@oxc-resolver/binding-win32-x64-msvc@npm:1.12.0"
+  conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
@@ -1664,7 +1755,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tybys/wasm-util@npm:^0.10.3":
+"@tybys/wasm-util@npm:^0.10.0, @tybys/wasm-util@npm:^0.10.3":
   version: 0.10.3
   resolution: "@tybys/wasm-util@npm:0.10.3"
   dependencies:
@@ -2445,6 +2536,157 @@ __metadata:
   version: 4.0.0
   resolution: "escape-string-regexp@npm:4.0.0"
   checksum: 10c0/9497d4dd307d845bd7f75180d8188bb17ea8c151c1edbf6b6717c100e104d629dc2dfb687686181b0f4b7d732c7dfdc4d5e7a8ff72de1b0ca283a75bbb3a9cd9
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils-android-arm-eabi@npm:0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils-android-arm-eabi@npm:0.0.11"
+  conditions: os=android & cpu=arm
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils-android-arm64@npm:0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils-android-arm64@npm:0.0.11"
+  conditions: os=android & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils-darwin-arm64@npm:0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils-darwin-arm64@npm:0.0.11"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils-darwin-x64@npm:0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils-darwin-x64@npm:0.0.11"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils-freebsd-x64@npm:0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils-freebsd-x64@npm:0.0.11"
+  conditions: os=freebsd & cpu=x64
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils-linux-arm-gnueabihf@npm:0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils-linux-arm-gnueabihf@npm:0.0.11"
+  conditions: os=linux & cpu=arm
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils-linux-arm64-gnu@npm:0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils-linux-arm64-gnu@npm:0.0.11"
+  conditions: os=linux & cpu=arm64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils-linux-arm64-musl@npm:0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils-linux-arm64-musl@npm:0.0.11"
+  conditions: os=linux & cpu=arm64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils-linux-x64-gnu@npm:0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils-linux-x64-gnu@npm:0.0.11"
+  conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils-linux-x64-musl@npm:0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils-linux-x64-musl@npm:0.0.11"
+  conditions: os=linux & cpu=x64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils-win32-arm64-msvc@npm:0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils-win32-arm64-msvc@npm:0.0.11"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils-win32-ia32-msvc@npm:0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils-win32-ia32-msvc@npm:0.0.11"
+  conditions: os=win32 & cpu=ia32
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils-win32-x64-msvc@npm:0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils-win32-x64-msvc@npm:0.0.11"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"eslint-barrel-file-utils@npm:^0.0.11":
+  version: 0.0.11
+  resolution: "eslint-barrel-file-utils@npm:0.0.11"
+  dependencies:
+    eslint-barrel-file-utils-android-arm-eabi: "npm:0.0.11"
+    eslint-barrel-file-utils-android-arm64: "npm:0.0.11"
+    eslint-barrel-file-utils-darwin-arm64: "npm:0.0.11"
+    eslint-barrel-file-utils-darwin-x64: "npm:0.0.11"
+    eslint-barrel-file-utils-freebsd-x64: "npm:0.0.11"
+    eslint-barrel-file-utils-linux-arm-gnueabihf: "npm:0.0.11"
+    eslint-barrel-file-utils-linux-arm64-gnu: "npm:0.0.11"
+    eslint-barrel-file-utils-linux-arm64-musl: "npm:0.0.11"
+    eslint-barrel-file-utils-linux-x64-gnu: "npm:0.0.11"
+    eslint-barrel-file-utils-linux-x64-musl: "npm:0.0.11"
+    eslint-barrel-file-utils-win32-arm64-msvc: "npm:0.0.11"
+    eslint-barrel-file-utils-win32-ia32-msvc: "npm:0.0.11"
+    eslint-barrel-file-utils-win32-x64-msvc: "npm:0.0.11"
+  dependenciesMeta:
+    eslint-barrel-file-utils-android-arm-eabi:
+      optional: true
+    eslint-barrel-file-utils-android-arm64:
+      optional: true
+    eslint-barrel-file-utils-darwin-arm64:
+      optional: true
+    eslint-barrel-file-utils-darwin-x64:
+      optional: true
+    eslint-barrel-file-utils-freebsd-x64:
+      optional: true
+    eslint-barrel-file-utils-linux-arm-gnueabihf:
+      optional: true
+    eslint-barrel-file-utils-linux-arm64-gnu:
+      optional: true
+    eslint-barrel-file-utils-linux-arm64-musl:
+      optional: true
+    eslint-barrel-file-utils-linux-x64-gnu:
+      optional: true
+    eslint-barrel-file-utils-linux-x64-musl:
+      optional: true
+    eslint-barrel-file-utils-win32-arm64-msvc:
+      optional: true
+    eslint-barrel-file-utils-win32-ia32-msvc:
+      optional: true
+    eslint-barrel-file-utils-win32-x64-msvc:
+      optional: true
+  checksum: 10c0/e7491b1d87f6975635e1a4e05c70ff0cbec0fe749bd03e8a48f679fd6523871e15b05b2a40445dda7ec2904eaed45185bd4d4261de9e35eca0cf5d2e17473083
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-barrel-files@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "eslint-plugin-barrel-files@npm:3.0.1"
+  dependencies:
+    eslint-barrel-file-utils: "npm:^0.0.11"
+    oxc-resolver: "npm:^1.9.3"
+  peerDependencies:
+    eslint: ">= 5"
+  checksum: 10c0/7a1a89e763353ff37a3ecabfeda28e7a9b55ca83c738f29221f00b0fd99d2475c075f6e6f24755219bc934813a70d7c0d3eecdac029f1d787183db160f74b415
   languageName: node
   linkType: hard
 
@@ -3521,6 +3763,48 @@ __metadata:
     "@oxc-parser/binding-win32-x64-msvc":
       optional: true
   checksum: 10c0/9d109fb3a79c0862a36434cc01c8c0e8f6cf5f1efe9369e02d2183fd518479b10262cf092da2e7f8328befae446afa05ccf742ce12f8346d81429c8f2cdf1651
+  languageName: node
+  linkType: hard
+
+"oxc-resolver@npm:^1.9.3":
+  version: 1.12.0
+  resolution: "oxc-resolver@npm:1.12.0"
+  dependencies:
+    "@oxc-resolver/binding-darwin-arm64": "npm:1.12.0"
+    "@oxc-resolver/binding-darwin-x64": "npm:1.12.0"
+    "@oxc-resolver/binding-freebsd-x64": "npm:1.12.0"
+    "@oxc-resolver/binding-linux-arm-gnueabihf": "npm:1.12.0"
+    "@oxc-resolver/binding-linux-arm64-gnu": "npm:1.12.0"
+    "@oxc-resolver/binding-linux-arm64-musl": "npm:1.12.0"
+    "@oxc-resolver/binding-linux-x64-gnu": "npm:1.12.0"
+    "@oxc-resolver/binding-linux-x64-musl": "npm:1.12.0"
+    "@oxc-resolver/binding-wasm32-wasi": "npm:1.12.0"
+    "@oxc-resolver/binding-win32-arm64-msvc": "npm:1.12.0"
+    "@oxc-resolver/binding-win32-x64-msvc": "npm:1.12.0"
+  dependenciesMeta:
+    "@oxc-resolver/binding-darwin-arm64":
+      optional: true
+    "@oxc-resolver/binding-darwin-x64":
+      optional: true
+    "@oxc-resolver/binding-freebsd-x64":
+      optional: true
+    "@oxc-resolver/binding-linux-arm-gnueabihf":
+      optional: true
+    "@oxc-resolver/binding-linux-arm64-gnu":
+      optional: true
+    "@oxc-resolver/binding-linux-arm64-musl":
+      optional: true
+    "@oxc-resolver/binding-linux-x64-gnu":
+      optional: true
+    "@oxc-resolver/binding-linux-x64-musl":
+      optional: true
+    "@oxc-resolver/binding-wasm32-wasi":
+      optional: true
+    "@oxc-resolver/binding-win32-arm64-msvc":
+      optional: true
+    "@oxc-resolver/binding-win32-x64-msvc":
+      optional: true
+  checksum: 10c0/61c0b9c2f02ee91fe73e49f6d84b3e373d48aba5e86c25503369f5285d6d2d1be54b0f2026ce5d2f18acc5989f9232fa44371e7855baeb3bffbd9c0b93777dac
   languageName: node
   linkType: hard
 

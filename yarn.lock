@@ -909,6 +909,7 @@ __metadata:
     eslint-plugin-jest-dom: "npm:^5.5.0"
     eslint-plugin-n: "npm:^18.2.2"
     eslint-plugin-no-only-tests: "npm:^3.4.0"
+    eslint-plugin-playwright: "npm:^2.10.5"
     oxfmt: "npm:^0.59.0"
     oxlint: "npm:^1.74.0"
     oxlint-tsgolint: "npm:^0.25.0"
@@ -3001,6 +3002,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-playwright@npm:^2.10.5":
+  version: 2.10.5
+  resolution: "eslint-plugin-playwright@npm:2.10.5"
+  dependencies:
+    globals: "npm:^17.3.0"
+  peerDependencies:
+    eslint: ">=8.40.0"
+  checksum: 10c0/23b18631364f44cd2e176e47791b28b58421217b6634da6684de108c7ef417101f02d7d55141e57a9d15fb83fe23ab5b29133385013919a561da3757461a692c
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-react-dom@npm:5.17.1":
   version: 5.17.1
   resolution: "eslint-plugin-react-dom@npm:5.17.1"
@@ -3455,6 +3467,13 @@ __metadata:
   version: 15.15.0
   resolution: "globals@npm:15.15.0"
   checksum: 10c0/f9ae80996392ca71316495a39bec88ac43ae3525a438b5626cd9d5ce9d5500d0a98a266409605f8cd7241c7acf57c354a48111ea02a767ba4f374b806d6861fe
+  languageName: node
+  linkType: hard
+
+"globals@npm:^17.3.0":
+  version: 17.7.0
+  resolution: "globals@npm:17.7.0"
+  checksum: 10c0/e83f791acf537b85fa1632ac48a45432a1999a61acd9f955b5c2145f66d6b5000a7945029874b6184fa2dfac8d33af03885a5a7ffa457866f1bcf0b40d0c1291
   languageName: node
   linkType: hard
 

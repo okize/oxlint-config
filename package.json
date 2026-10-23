@@ -21,6 +21,7 @@
     "eslint-plugin-no-only-tests": "^3.4.0",
     "eslint-plugin-playwright": "^2.10.5",
     "eslint-plugin-storybook": "^10.5.2",
+    "eslint-plugin-styled-components": "^0.0.0",
     "typescript": "^6.0.3"
   },
   "devDependencies": {

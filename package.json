@@ -8,6 +8,8 @@
   },
   "description": "My preferred oxlint rule settings bundled into composable configs",
   "scripts": {
+    "changeset": "changeset",
+    "release": "changeset publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

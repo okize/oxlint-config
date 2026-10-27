@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: 'github-actions'
+    directories:
+      - '/.github/actions/**/*'
+      - '/.github/workflows/**/*'
+    schedule:
+      interval: 'weekly'
+    ignore:
+      - dependency-name: '*'
+        # ignore patch updates due to frequency
+        update-types: ['version-update:semver-patch']
+    cooldown:
+      default-days: 3
+    commit-message:
+      prefix: 'ci(github)'

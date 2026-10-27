@@ -1,0 +1,61 @@
+name: Create Release Pull Request or Publish to npm
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  id-token: write
+  issues: read
+  packages: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    steps:
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ secrets.ACTIONS_BOT_GH_APP_CLIENT_ID }}
+          private-key: ${{ secrets.ACTIONS_BOT_GH_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: oxlint-config
+
+      - name: Check out Git repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Install Node and npm packages
+        uses: ./.github/actions/setup-node-env
+
+      # this is a hack but at this time it's the only way to get the changeset version for the
+      # commit message in the next step. using `changeset status` it generates a `release.json` file,
+      # then reads the new version from it and then removes the file
+      - name: Get new package version
+        run: |
+          echo "NEW_PACKAGE_VERSION=$(yarn changeset status --output=release.json && jq -r '.releases[0].newVersion' release.json && rm release.json)" >> "$GITHUB_ENV"
+
+      - name: Create Release Pull Request or Publish to npm
+        uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
+        id: changesets
+        with:
+          createGithubReleases: true
+          publish: yarn release
+          title: 'chore: release v${{env.NEW_PACKAGE_VERSION}}'
+          commit: 'chore: release v${{env.NEW_PACKAGE_VERSION}}'
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

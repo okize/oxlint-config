@@ -9,6 +9,9 @@
   "description": "My preferred oxlint rule settings bundled into composable configs",
   "scripts": {
     "changeset": "changeset",
+    "format": "oxfmt -c oxfmt.config.mjs .",
+    "format:ci": "oxfmt -c oxfmt.config.mjs --check .",
+    "outdated": "yarn upgrade-interactive",
     "release": "changeset publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -38,6 +41,26 @@
     "storybook": "^10.5.2",
     "vitest": "^4.1.10"
   },
+  "peerDependencies": {
+    "eslint": ">= 10.7.0",
+    "oxfmt": ">= 0.59.0",
+    "oxlint": ">= 1.74.0",
+    "oxlint-tsgolint": ">= 0.25.0"
+  },
+  "peerDependenciesMeta": {
+    "oxfmt": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24 || >=26"
+  },
+  "keywords": [
+    "oxlint",
+    "oxlint-config",
+    "linter",
+    "typescript"
+  ],
   "homepage": "https://github.com/okize/oxlint-config#readme",
   "bugs": {
     "url": "https://github.com/okize/oxlint-config/issues"

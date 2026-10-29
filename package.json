@@ -3,10 +3,51 @@
   "version": "0.0.1",
   "type": "module",
   "packageManager": "yarn@4.17.1",
-  "exports": {
-    "./package.json": "./package.json"
-  },
   "description": "My preferred oxlint rule settings bundled into composable configs",
+  "files": [
+    "/configs",
+    "/rules",
+    "/plugins",
+    "/index.mjs",
+    "/index.d.mts",
+    "/oxfmtConfig.mjs",
+    "/oxfmtConfig.d.mts",
+    "/resolve-plugin.mjs"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./index.d.mts",
+      "default": "./index.mjs"
+    },
+    "./javascript": "./configs/javascript.mjs",
+    "./typescript": "./configs/typescript.mjs",
+    "./react": "./configs/react.mjs",
+    "./node": "./configs/node.mjs",
+    "./vitest": "./configs/vitest.mjs",
+    "./playwright": "./configs/playwright.mjs",
+    "./storybook": "./configs/storybook.mjs",
+    "./styled-components": "./configs/styled-components.mjs",
+    "./testing-library": "./configs/testing-library.mjs",
+    "./oxfmtConfig": {
+      "types": "./oxfmtConfig.d.mts",
+      "default": "./oxfmtConfig.mjs"
+    },
+    "./rules/barrel-files": "./rules/barrel-files.mjs",
+    "./rules/base": "./rules/base.mjs",
+    "./rules/import": "./rules/import.mjs",
+    "./rules/node": "./rules/node.mjs",
+    "./rules/playwright": "./rules/playwright.mjs",
+    "./rules/promise": "./rules/promise.mjs",
+    "./rules/react-a11y": "./rules/react-a11y.mjs",
+    "./rules/react": "./rules/react.mjs",
+    "./rules/storybook": "./rules/storybook.mjs",
+    "./rules/styled-components": "./rules/styled-components.mjs",
+    "./rules/testing-library": "./rules/testing-library.mjs",
+    "./rules/typescript": "./rules/typescript.mjs",
+    "./rules/unicorn": "./rules/unicorn.mjs",
+    "./rules/vitest": "./rules/vitest.mjs"
+  },
   "scripts": {
     "changeset": "changeset",
     "format": "oxfmt -c oxfmt.config.mjs .",

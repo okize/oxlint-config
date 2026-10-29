@@ -948,6 +948,14 @@ __metadata:
     storybook: "npm:^10.5.2"
     typescript: "npm:^6.0.3"
     vitest: "npm:^4.1.10"
+  peerDependencies:
+    eslint: ">= 10.7.0"
+    oxfmt: ">= 0.59.0"
+    oxlint: ">= 1.74.0"
+    oxlint-tsgolint: ">= 0.25.0"
+  peerDependenciesMeta:
+    oxfmt:
+      optional: true
   languageName: unknown
   linkType: soft
 

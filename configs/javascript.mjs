@@ -7,10 +7,7 @@ import { unicornRules } from '../rules/unicorn.mjs';
 
 export default defineConfig({
   plugins: [...baseRules.plugins, ...importRules.plugins, ...promiseRules.plugins],
-  jsPlugins: [
-    ...(importRules.jsPlugins || []),
-    ...(barrelFilesRules.jsPlugins || []),
-  ],
+  jsPlugins: [...(importRules.jsPlugins || []), ...(barrelFilesRules.jsPlugins || [])],
   rules: {
     ...baseRules.rules,
     ...importRules.rules,

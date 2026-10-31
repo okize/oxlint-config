@@ -1,0 +1,1 @@
+# @okize/oxlint-config

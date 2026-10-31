@@ -17,10 +17,7 @@ export default defineConfig({
     ...promiseRules.plugins,
     ...typescriptRules.plugins,
   ],
-  jsPlugins: [
-    ...(importRules.jsPlugins || []),
-    ...(barrelFilesRules.jsPlugins || []),
-  ],
+  jsPlugins: [...(importRules.jsPlugins || []), ...(barrelFilesRules.jsPlugins || [])],
   rules: {
     ...baseRules.rules,
     ...importRules.rules,
